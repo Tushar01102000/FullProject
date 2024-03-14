@@ -1,0 +1,28 @@
+<!-- admin-login -->
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong">
+                    <div class="card-body p-5 text-center">
+                        <h3 class="mb-4">Admin Login</h3>
+
+                        <!-- form-part -->
+                        <form [formGroup]="adminLoginForm" (ngSubmit)="adminLogin()">
+                            <div class="form-outline mb-4">
+                                <input type="email" class="form-control form-control-lg" formControlName="email" placeholder="Email ID">
+                            </div>
+                            <div class="form-outline mb-4">
+                                <input type="password" class="form-control form-control-lg" formControlName="password" placeholder="Password">
+                            </div>
+                            <button class="btn btn-dark" [disabled]="this.adminLoginForm.invalid">Login</button>&nbsp;
+                            <button type="button" class="btn btn-warning" routerLink="/">Home</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

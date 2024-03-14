@@ -1,0 +1,41 @@
+<!-- image-section -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="image">
+                <img class="img-fluid" src="https://salestack.in/admin/api/uploads/Product//1660628686Qz8l94Ic.png" alt="">
+            </div>
+        </div>
+
+    <!-- from-section -->
+    <div class="col-md-12 col-lg-6">
+        <div class="card">
+            <h5>Add Contact</h5>
+            <div class="row">
+                <form [formGroup]="contactForm">
+                    <div class=" form-group mb-1">
+                      <label for="" class="form-label">First Name</label>
+                      <input type="text" class="form-control" formControlName="firstname" placeholder="First Name">  
+                    </div>
+                    <div class=" form-group mb-1">
+                        <label for="" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastname" placeholder="Last Name">  
+                    </div>
+                    <div class=" form-group mb-1">
+                        <label for="" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" formControlName="phonenumber" placeholder="Phone Number">  
+                    </div>
+                    <div class=" form-group mb-1">
+                        <label for="" class="form-label">City</label>
+                        <input type="text" class="form-control" formControlName="city" placeholder="City">  
+                    </div>
+                    <div class="text-center mt-2">
+                        <button type="submit" class="btn btn-primary" (click)="submitContact(this.contactForm.value)" [disabled]="this.contactForm.invalid">Submit</button> &nbsp;
+                        <button type="submit" class="btn btn-success" routerLink="/contactlist">Back</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

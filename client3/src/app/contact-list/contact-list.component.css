@@ -1,0 +1,71 @@
+h1{
+    font-size: 24px;
+}
+
+.navbar{
+    background-color: #00FFFF;
+    overflow: hidden;
+}
+
+.navbar-toggler{
+    color: #5627F5;
+}
+
+.navbar-brand{
+    color: #8356F5;
+}
+
+.image{
+    width: 600px;
+    margin-top: 60px;
+}
+
+.fas{
+    color: #5627F5;
+}
+
+.fa-trash{
+    color: red;
+}
+
+h5{
+    font-size: 1rem;
+}
+
+.footer{
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #00FFFF;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}
+
+.modal-header, .modal-footer{
+    background-color: #00FFFF;
+}
+
+@media only screen and (max-width: 600px){
+    
+    .container-fluid{
+        width: 100vw;
+    }
+    .image{
+        display: none;
+    }
+
+    .footer{
+        width: 120vw;
+
+    }
+
+    .table{
+        width: 100vw;
+    }
+
+    .navbar{
+        width: 120vw;
+    }
+}

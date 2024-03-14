@@ -1,0 +1,101 @@
+<!---navbar--->
+<nav class="navbar navbar-light navbar-expand-lg">
+    <div class="container-fluid">
+        <h1 class="navbar-brand">Phone Book</h1>
+        <button class="navbar-toggler navbar-toggler-right ml-auto collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>    
+        <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+            <button type="button" class="btn btn-success" routerLink="/addcontact">Add contact</button>&nbsp; 
+            <button type="button" *ngIf="adminCheck()" class="btn btn-danger" routerLink="/admin-view">Admin View</button>&nbsp; 
+            <button type="button" class="btn btn-warning" routerLink="/" (click)="logout()">Logout</button>
+        </div>
+    </div>   
+</nav>
+
+<!-- image-section -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="image img-fluid">
+                <img class="img-fluid" src="https://www.getsharedcontacts.com/wp-content/uploads/2022/01/The-short-guide-to-Contact-Management-1024x576.png" alt="">
+            </div>
+        </div>
+
+        <!--table-->
+        <div class="col-md-7">
+            <!-- search-box -->
+            <div class="form-outline mt-3">
+                <input type="search" id="form1" class="form-control" placeholder="Search User" aria-label="search" [(ngModel)]="searchText">
+            </div>
+            <table class="table table-borderless mt-2">
+                <thead>
+                  <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of data | filter:searchText">
+                    <td>{{user.firstname}}</td>
+                    <td>{{user.lastname}}</td>   
+                    <td>{{user.phonenumber}}</td> 
+                    <td>{{user.city}}</td>
+                    <td><i class="fas fa-solid fa-pen-to-square" routerLink="/updatecontact/{{user._id}}"></i>&nbsp; 
+                        <i class="fa-solid fa-trash" (click)="deleteContact(user._id)" *ngIf="adminCheck()"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+
+<div class="footer">
+  <div class="container-fluid">
+    <h5 class="fw-2">&#64;Copyright 2024 PhoneBook&nbsp;
+        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" *ngIf="!this.api.adminCheck()">Contact us</button>
+    </h5>
+  </div>
+</div>
+
+<!-- footer modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contact us</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- bootstrap form -->
+            <form [formGroup]="contactUsForm">
+                <div class="form-group mt-2">
+                  <label class="form-label">Name</label>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Name" aria-describedby="emailHelp"> 
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email ID" aria-describedby="emailHelp"> 
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-label">Message</label>
+                    <textarea type="text" class="form-control" formControlName="message" placeholder="Message" rows="4" aria-describedby="emailHelp"></textarea>
+                </div>
+           
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+          <button class="btn btn-dark" (click)="contactUsSubmit(this.contactUsForm.value)">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
